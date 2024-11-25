@@ -20,8 +20,8 @@
 %%                                and README.md.                         *
 %%    available at https://github.com/xiamyphys/whatsnote                *
 %% ***********************************************************************
-\def\whatsnote@date{2024/11/11}
-\def\whatsnote@version{3.0A}
+\def\whatsnote@date{2024/11/26}
+\def\whatsnote@version{3.0B}
 
 \ProvidesExplClass {whatsnote} {\whatsnote@date} {\whatsnote@version}
   {LaTeX Class for taking Note}

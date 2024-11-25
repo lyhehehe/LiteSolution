@@ -1,7 +1,7 @@
 \whatsnote_provide_module:n { theorem }
 
 \RequirePackage
-  { mathtools, amssymb, amsthm, cancel, extarrows,
+  { mathtools, amssymb, keytheorems, cancel, extarrows,
     nicematrix, siunitx, physics2, fixdif, derivative }
 
 \newtheorem{theorem}{Theorem}
@@ -19,17 +19,17 @@
   { \ensuremath { \mathcolor { gray } { \blacksquare } } }
 \newtheorem { problem }
   {
-    \sffamily\scshape \color { DarkGreen }
+    \sffamily\scshape \color { DarkGreen \l__whats_darkmode_fading_tl }
     \faIcon { pen-square }~Problem
   } [ chapter ]
 \newtheorem* { solution }
   {
-    \sffamily\scshape \color { MidnightBlue }
+    \sffamily\scshape \color { MidnightBlue \l__whats_darkmode_fading_tl }
     \faIcon { check-square }~Solution
   }
 \newtheorem* { scratchwork }
   {
-    \sffamily\scshape \color { MidnightBlue }
+    \sffamily\scshape \color { MidnightBlue \l__whats_darkmode_fading_tl }
     \faIcon { eraser }~Scratch~Work
   }
 \RequirePackage{comment}

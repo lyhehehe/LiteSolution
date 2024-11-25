@@ -11,7 +11,7 @@
 \coverset
   {
     title    = The \pkg{WhatsNote} Class,
-    subtitle = Version 3.0A,
+    subtitle = Version 3.0B,
     bioinfo  = Mingyu Xia \url{<xiamyphys@gmail.com>},
     color    = MidnightBlue,
     head     = universe/3,
@@ -44,10 +44,11 @@
 
 \subsection{Font}
 
-You can set \keys{\cmdmac~math-font}, \keys{\cmdmac~main-font},
-\keys{\cmdmac~sans-font} and \keys{\cmdmac~mono-font}.
+You can set \keys{\cmdmac~math-font} \keys{\cmdmac~main-font} 
+\keys{\cmdmac~sans-font} \keys{\cmdmac~mono-font}.
 The \keys{\cmdmac~CJK-font} can be set via \hologo{XeLaTeX} compiler.
 
+\begin{framed}
 \begin{verbatim}
   math-font    = STIX Two Math,
   main-font    = { {Libertinus Serif} },
@@ -58,6 +59,7 @@ The \keys{\cmdmac~CJK-font} can be set via \hologo{XeLaTeX} compiler.
   CJKsans-font = { {LXGW WenKai} [BoldFont = *-Medium, AutoFakeSlant] },
   CJKmono-font = { {LXGW WenKai Mono} [BoldFont = *-Medium, AutoFakeSlant] },
 \end{verbatim}
+\end{framed}
 
 \scratch
 \begin{solution}
@@ -73,25 +75,15 @@ will be hidden when enable this.
 
 \section{Left Text \& Right Figure}
 
-\begin{framed}
-  \begin{verbatim}
-    \begin{textfig}[ key values ]
-      <Left Content>
-      \textfigsplit
-      <Right Content>
-    \end{textfig}
-  \end{verbatim}
-\end{framed}
+\begin{verbatim}
+  \begin {textfig} [ ratio ]
+    <Left Content> \textfigsplit <Right Content>
+  \end {textfig}
+\end{verbatim}
 
-The keys in the environment \env{textfig} accepts the following values:
-\begin{tasks}[ label = \ensuremath\bullet ](2)
-  \task \keys{\cmdmac~lefthand ratio} accepts float point number.
-  \task \keys{\cmdmac~righthand ratio} accepts float point number.
-  \task \keys{\cmdmac~lefthand width} accepts diameter.
-  \task \keys{\cmdmac~righthand width} accepts diameter.
-\end{tasks}
+The keys in the environment \env{textfig} accepts a ratio that separate by a colon (\cmd:).
 
-\begin{textfig}[ lefthand ratio = .72 ]
+\begin{textfig}[ 3:2 ]
   \begin{problem}[ text-fig layout]
     \lipsum [ 1 ]
     \begin{tasks}(4)
