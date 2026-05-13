@@ -35,10 +35,9 @@ installfiles        = {"*.sty", "*.code.tex"}
 tagfiles            = {"*.dtx", "*.tex"}
 textfiles           = {"*.md", "LICENSE", "*.lua"}
 typesetdemofiles    = {module .. "-demo.tex"}
-typesetexe          = "latexmk -pdf -synctex=1"
+typesetexe          = "latexmk -pdf"
 typesetfiles        = {"*.dtx"}
 typesetruns         = 1
-synctex             = false
 
 uploadconfig  = {
   pkg          = module,
@@ -73,20 +72,9 @@ end
 
 function docinit_hook()
   cp(ctanreadme, unpackdir, currentdir)
-  table.insert(cleanfiles, "*.synctex.gz")
-  for _,glob in pairs(cleanfiles) do
-    rm(maindir, glob)
-  end
   return 0
 end
 function tex(file,dir,cmd)
-  if synctex == true then
-    synctexcmd = "-synctex=1"
-    cpsyncfile = "&& cp *.synctex.gz ../../"
-  else
-    synctexcmd = "-synctex=0"
-    cpsyncfile = ""
-  end
   dir = dir or "."
   cmd = cmd or typesetexe
   if os.getenv("WINDIR") ~= nil or os.getenv("COMSPEC") ~= nil then
@@ -98,7 +86,6 @@ function tex(file,dir,cmd)
     makeidx_aux = "-e \'$makeindex=q/makeindex -s " .. indexstyle .. " %O %S/\'"
     sandbox_aux = "TEXINPUTS=\"../unpacked:$(kpsewhich -var-value=TEXINPUTS):\""
   end
-  return run(dir, sandbox_aux .. " " .. cmd ..  " " .. synctexcmd .. " " ..
-                  upretex_aux .. " " .. makeidx_aux .. " " ..
-                  file        .. " " .. cpsyncfile)
+  return run(dir, sandbox_aux .. " " .. cmd         .. " " ..
+                  upretex_aux .. " " .. makeidx_aux .. " " .. file)
 end
